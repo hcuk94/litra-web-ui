@@ -1,0 +1,4 @@
+github.com/derickr/go-litra-driver v0.0.0-20220524104025-ad78d5196d13 h1:Dob3TmmE1SOUzxsc9r51oIATLOG/Y1r8oIfn41R17HQ=
+github.com/derickr/go-litra-driver v0.0.0-20220524104025-ad78d5196d13/go.mod h1:vqmq4na1MISrnaW9IIywOu4sAEbHUWcfYYmz8SNtpes=
+github.com/karalabe/usb v0.0.2 h1:M6QQBNxF+CQ8OFvxrT90BA0qBOXymndZnk5q235mFc4=
+github.com/karalabe/usb v0.0.2/go.mod h1:Od972xHfMJowv7NGVDiWVxk2zxnWgjLlJzE+F4F7AGU=
