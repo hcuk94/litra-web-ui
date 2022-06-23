@@ -29,7 +29,7 @@ func apiOn(c *gin.Context) {
 func apiOff(c *gin.Context) {
 	ld, err := litra.New()
 	if err == nil {
-		ld.TurnOn()
+		ld.TurnOff()
 		ld.Close()
 	}
 }
