@@ -22,12 +22,16 @@ func apiOn(c *gin.Context) {
 	ld, _ := litra.New()
 	ld.TurnOn()
 	ld.Close()
+	c.Status(200)
+	return
 }
 
 func apiOff(c *gin.Context) {
 	ld, _ := litra.New()
 	ld.TurnOff()
 	ld.Close()
+	c.Status(200)
+	return
 }
 
 func apiBrightness(c *gin.Context) {
