@@ -19,19 +19,15 @@ func main() {
 }
 
 func apiOn(c *gin.Context) {
-	ld, err := litra.New()
-	if err == nil {
-		ld.TurnOn()
-		ld.Close()
-	}
+	ld, _ := litra.New()
+	ld.TurnOn()
+	ld.Close()
 }
 
 func apiOff(c *gin.Context) {
-	ld, err := litra.New()
-	if err == nil {
-		ld.TurnOff()
-		ld.Close()
-	}
+	ld, _ := litra.New()
+	ld.TurnOff()
+	ld.Close()
 }
 
 func apiBrightness(c *gin.Context) {
