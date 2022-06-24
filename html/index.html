@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="col">
                             <label for="temperatureSlider" class="form-label">Temperature</label>
-                            <input type="range" class="form-range" min="2700" max="6500" step="190" id="temperatureSlider">
+                            <input type="range" class="form-range" min="2700" max="6500" step="190" id="temperatureSlider" onchange="adjTemperature()">
                         </div>
                     </div>
                 </div>
@@ -42,18 +42,24 @@
         </div>
     <!-- JavaScript for Button Clicks -->
     <script type="text/javascript">
+        errText = 'Failed to communicate with the API :-(';
         function lightOn() {
             fetch('/api/on')
-            .catch(err => alert('Failed to communicate with the API :-('));
+            .catch(err => alert(errText));
         }
         function lightOff() {
             fetch('/api/off')
-            .catch(err => alert('Failed to communicate with the API :-('));
+            .catch(err => alert(errText));
         }
         function adjBrightness() {
-            b = document.getElementById("temperatureSlider").value;
+            b = document.getElementById("brightnessSlider").value;
             fetch('/api/brightness/' + b)
-            .catch(err => alert('Failed to communicate with the API :-('));
+            .catch(err => alert(errText));
+        }
+        function adjTemperature() {
+            t = document.getElementById("temperatureSlider").value;
+            fetch('/api/temperature/' + t)
+            .catch(err => alert(errText));
         }
     </script>
     </body>
