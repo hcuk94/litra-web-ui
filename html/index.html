@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">    
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <title>LitraWeb</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <div class="row">
+                        <div class="col">
+                            <h1>LitraWeb</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="btn-group" role="group" aria-label="On/Off">
+                                <button type="button" class="btn btn-primary" onclick="lightOn()">On</button>
+                                <button type="button" class="btn btn-primary" onclick="lightOff()">Off</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="brightnessSlider" class="form-label">Brightness</label>
+                            <input type="range" class="form-range" min="0" max="100" step="5" id="brightnessSlider">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="temperatureSlider" class="form-label">Temperature</label>
+                            <input type="range" class="form-range" min="2700" max="6500" step="190" id="temperatureSlider">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+        </div>
+    <!-- JavaScript for Button Clicks -->
+    <script type="text/javascript">
+        function lightOn() {
+            fetch('/api/on')
+            .catch(err => alert('Failed to communicate with the API :-('));
+        }
+        function lightOff() {
+            fetch('/api/off')
+            .catch(err => alert('Failed to communicate with the API :-('));
+        }
+    </script>
+    </body>
+</html>

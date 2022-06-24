@@ -17,10 +17,10 @@ func main() {
 		// Define Gin Router
 		router := gin.Default()
 		// Define API Endpoints
-		router.GET("/on", apiOn)
-		router.GET("/off", apiOff)
-		router.GET("/brightness/:val", apiBrightness)
-		router.GET("/temperature/:val", apiTemperature)
+		router.GET("/api/on", apiOn)
+		router.GET("/api/off", apiOff)
+		router.GET("/api/brightness/:val", apiBrightness)
+		router.GET("/api/temperature/:val", apiTemperature)
 		// Run the Web Server
 		router.Run(":8080")
 	}
