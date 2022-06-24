@@ -21,6 +21,8 @@ func main() {
 		router.GET("/api/off", apiOff)
 		router.GET("/api/brightness/:val", apiBrightness)
 		router.GET("/api/temperature/:val", apiTemperature)
+		// Define Static Web Endpoint
+		router.Static("/", "/html")
 		// Run the Web Server
 		router.Run(":8080")
 	}
