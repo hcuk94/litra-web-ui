@@ -27,7 +27,7 @@ func main() {
 			c.HTML(http.StatusOK, "html/index.html", gin.H{})
 		})
 		// Static handler for css
-		router.Static("/resources", "/resources")
+		router.Static("/resources", "./resources")
 		// Run the Web Server
 		router.Run(":8080")
 	}
