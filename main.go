@@ -23,11 +23,12 @@ func main() {
 		router.GET("/api/brightness/:val", apiBrightness)
 		router.GET("/api/temperature/:val", apiTemperature)
 		// Serve index.html at root
+		router.LoadHTMLFiles("html/index.html")
 		router.GET("/", func(c *gin.Context) {
-			c.HTML(http.StatusOK, "html/index.html", gin.H{})
+			c.HTML(http.StatusOK, "index.html", gin.H{})
 		})
 		// Static handler for css
-		router.Static("/resources", "/html/resources")
+		router.Static("/resources", "html/resources")
 		// Run the Web Server
 		router.Run(":8080")
 	}
