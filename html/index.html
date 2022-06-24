@@ -9,35 +9,41 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-1"></div>
-                <div class="col-10">
-                    <div class="row">
+                <div class="col-xl-3"></div>
+                <div class="col-12 col-xl-6">
+                    <div class="row mt-2 mb-4">
                         <div class="col">
-                            <h1>LitraWeb</h1>
+                            <nav class="navbar">
+                                <h1 class="navbar-brand">LitraWeb</h1>
+                                <div class="btn-group" role="group" aria-label="On/Off">
+                                    <button type="button" class="btn btn-primary" onclick="lightOn()">On</button>
+                                    <button type="button" class="btn btn-secondary" onclick="lightOff()">Off</button>
+                                </div>
+                            </nav>                              
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col">
-                            <div class="btn-group" role="group" aria-label="On/Off">
-                                <button type="button" class="btn btn-primary" onclick="lightOn()">On</button>
-                                <button type="button" class="btn btn-primary" onclick="lightOff()">Off</button>
+                            <label for="brightnessSlider" class="form-label">Brightness</label><br/>
+                            <div class="row">
+                                <div class="col-2 col-xl-1"><small class="text-muted">Dim</small></div>
+                                <div class="col-8 col-xl-10"><input type="range" class="form-range secondary" min="0" max="100" step="5" id="brightnessSlider" onchange="adjBrightness()"></div>
+                                <div class="col-2 col-xl-1"><small class="text-muted">Bright</small></div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="brightnessSlider" class="form-label">Brightness</label>
-                            <input type="range" class="form-range" min="0" max="100" step="5" id="brightnessSlider" onchange="adjBrightness()">
-                        </div>
-                    </div>
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col">
                             <label for="temperatureSlider" class="form-label">Temperature</label>
-                            <input type="range" class="form-range" min="2700" max="6500" step="190" id="temperatureSlider" onchange="adjTemperature()">
+                            <div class="row">
+                                <div class="col-2 col-xl-1"><small class="text-muted">Cold</small></div>
+                                <div class="col-8 col-xl-10"><input type="range" class="form-range" min="2700" max="6500" step="190" id="temperatureSlider" onchange="adjTemperature()"></div>
+                                <div class="col-2 col-xl-1"><small class="text-muted">Warm</small></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-1"></div>
+                <div class="col-xl-3"></div>
             </div>
         </div>
     <!-- JavaScript for Button Clicks -->
