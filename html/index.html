@@ -16,8 +16,10 @@
                             <nav class="navbar">
                                 <h1 class="navbar-brand">LitraWeb</h1>
                                 <div class="btn-group" role="group" aria-label="On/Off">
-                                    <button type="button" class="btn btn-primary" onclick="lightOn()">On</button>
-                                    <button type="button" class="btn btn-secondary" onclick="lightOff()">Off</button>
+                                    <input type="radio" class="btn-check btn-primary" name="onoff" id="onoff-on" onclick="lightOn()">
+                                    <label class="btn btn-outline-primary" for="onoff-on">On</label>
+                                    <input type="radio" class="btn-check btn-secondary" name="onoff" id="onoff-off" onclick="lightOff()">
+                                    <label class="btn btn-outline-primary" for="onoff-off">Off</label>
                                 </div>
                             </nav>                              
                         </div>
