@@ -1,6 +1,7 @@
 package main
 
 import (
+	"net/http"
 	"strconv"
 
 	"github.com/derickr/go-litra-driver"
@@ -21,8 +22,12 @@ func main() {
 		router.GET("/api/off", apiOff)
 		router.GET("/api/brightness/:val", apiBrightness)
 		router.GET("/api/temperature/:val", apiTemperature)
-		// Define Static Web Endpoint
-		router.GET("/", apiOn)
+		// Serve index.html at root
+		router.GET("/", func(c *gin.Context) {
+			c.HTML(http.StatusOK, "html/index.html", gin.H{})
+		})
+		// Static handler for css
+		router.Static("/resources", "/resources")
 		// Run the Web Server
 		router.Run(":8080")
 	}
