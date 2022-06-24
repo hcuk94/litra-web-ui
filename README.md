@@ -35,12 +35,12 @@ And finally, (re-)plugin your light.
 The web interface can be accessed at the root of port 8080 on your device, e.g. ``http://127.0.0.1:8080/``
 
 The API offers the following endpoints:
-| Endpoint              | Purpose             | Request | Variable Input                                                   |   |
-|-----------------------|---------------------|---------|------------------------------------------------------------------|---|
-| /api/on               | Turn the light on   | GET     |                                                                  |   |
-| /api/off              | Turn the light off  | GET     |                                                                  |   |
-| /api/brightness/:var  | Set the brightness  | GET     | :var - brightness value Range: 0-100                             |   |
-| /api/temperature/:var | Set the temperature | GET     | :var - temperature value Range: 2700-6500 (in increments of 100) |   |
+| Endpoint              | Purpose             | Request | Variable Input                                                   |
+|-----------------------|---------------------|---------|------------------------------------------------------------------|
+| /api/on               | Turn the light on   | GET     |                                                                  |
+| /api/off              | Turn the light off  | GET     |                                                                  |
+| /api/brightness/:var  | Set the brightness  | GET     | :var - brightness value Range: 0-100                             |
+| /api/temperature/:var | Set the temperature | GET     | :var - temperature value Range: 2700-6500 (in increments of 100) |
 
 
 ## Limitations
