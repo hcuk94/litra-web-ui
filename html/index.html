@@ -29,7 +29,7 @@
                             <label for="brightnessSlider" class="form-label">Brightness</label><br/>
                             <div class="row">
                                 <div class="col-2 col-xl-1"><small class="text-muted">Dim</small></div>
-                                <div class="col-8 col-xl-10"><input type="range" class="form-range secondary" min="0" max="100" step="5" id="brightnessSlider" onchange="adjBrightness()"></div>
+                                <div class="col-8 col-xl-10"><input type="range" class="form-range secondary" min="0" max="100" step="5" id="brightnessSlider" onchange="clearPresets(); adjBrightness(this.value)"></div>
                                 <div class="col-2 col-xl-1"><small class="text-muted">Bright</small></div>
                             </div>
                         </div>
@@ -39,8 +39,25 @@
                             <label for="temperatureSlider" class="form-label">Temperature</label>
                             <div class="row">
                                 <div class="col-2 col-xl-1"><small class="text-muted">Warm</small></div>
-                                <div class="col-8 col-xl-10"><input type="range" class="form-range" min="2700" max="6500" step="100" id="temperatureSlider" onchange="adjTemperature()"></div>
+                                <div class="col-8 col-xl-10"><input type="range" class="form-range" min="2700" max="6500" step="100" id="temperatureSlider" onchange="clearPresets(); adjTemperature(this.value)"></div>
                                 <div class="col-2 col-xl-1"><small class="text-muted">Cold</small></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="presets" class="form-label">Presets</label>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="btn-group-vertical" role="group" id="preset-group">
+                                        <!-- <input type="radio" class="btn-check btn-primary" name="presets" id="bright-cool-blue" onclick="applyPreset(this);">
+                                        <label class="btn btn-outline-primary" for="bright-cool-blue">Bright Cool Blue</label>
+                                        <input type="radio" class="btn-check btn-primary" name="presets" id="cozy-daylight" onclick="applyPreset(this);">
+                                        <label class="btn btn-outline-primary" for="cozy-daylight">Cosy Daylight</label>
+                                        <input type="radio" class="btn-check btn-primary" name="presets" id="mild-afternoon" onclick="applyPreset(this);">
+                                        <label class="btn btn-outline-primary" for="mild-afternoon">Mild Afternoon</label> -->
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -51,6 +68,14 @@
     <!-- JavaScript for Button Clicks -->
     <script type="text/javascript">
         errText = 'Failed to communicate with the API :-(';
+        presets = {
+            "bright-cool-blue": {"name":"Bright Cool Blue", "temp":6500, "bright":100},
+            "cozy-daylight": {"name":"Cozy Daylight", "temp":5360, "bright":35},
+            "mild-afternoon": {"name":"Mild Afternoon", "temp":4980, "bright":20},
+            "soft-sunset": {"name":"Soft Sunset", "temp":4220, "bright":20},
+            "cozy-candlelight": {"name":"Cozy Candlelight", "temp":3650, "bright":35},
+            "bright-warm-candlelight": {"name":"Bright Warm Candlelight", "temp":2700, "bright":100}
+        }
         function lightOn() {
             fetch('/api/on')
             .catch(err => alert(errText));
@@ -59,16 +84,46 @@
             fetch('/api/off')
             .catch(err => alert(errText));
         }
-        function adjBrightness() {
-            b = document.getElementById("brightnessSlider").value;
+        function adjBrightness(b) {
             fetch('/api/brightness/' + b)
             .catch(err => alert(errText));
         }
-        function adjTemperature() {
-            t = document.getElementById("temperatureSlider").value;
+        function adjTemperature(t) {
             fetch('/api/temperature/' + t)
             .catch(err => alert(errText));
         }
+        function applyPreset(callingElement) {
+            preset = callingElement.id
+            console.log(preset);
+            temp = presets[preset].temp
+            bright = presets[preset].bright
+            adjTemperature(temp);
+            adjBrightness(bright);
+        }
+        function dispPrests() {
+            for (const [key, value] of Object.entries(presets)) {
+                const thisInput = document.createElement('input');
+                thisInput.type = "radio";
+                thisInput.className = "btn-check btn-primary";
+                thisInput.name = "presets";
+                thisInput.id = key;
+                thisInput.onclick = function() {applyPreset(this);};
+                const thisLabel = document.createElement('label');
+                thisLabel.htmlFor = key;
+                thisLabel.className = "btn btn-outline-primary";
+                thisLabel.innerText = value["name"];
+                document.getElementById("preset-group").appendChild(thisInput);
+                document.getElementById("preset-group").appendChild(thisLabel);
+            }
+        }
+        function clearPresets() {
+            var p = document.getElementsByName('presets');
+            for (var i=0; i<p.length; i++) {
+                var btn = p[i];
+                btn.checked = false;
+            }
+        }
+        window.onload = dispPrests();
     </script>
     </body>
 </html>
