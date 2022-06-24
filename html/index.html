@@ -24,9 +24,9 @@
                             </nav>                              
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    <div class="row mb-4">
                         <div class="col">
-                            <label for="brightnessSlider" class="form-label">Brightness</label><br/>
+                            <label for="brightnessSlider" class="form-label mb-3">Brightness</label><br/>
                             <div class="row">
                                 <div class="col-2 col-xl-1"><small class="text-muted">Dim</small></div>
                                 <div class="col-8 col-xl-10"><input type="range" class="form-range secondary" min="0" max="100" step="5" id="brightnessSlider" onchange="clearPresets(); adjBrightness(this.value)"></div>
@@ -34,9 +34,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    <div class="row mb-4">
                         <div class="col">
-                            <label for="temperatureSlider" class="form-label">Temperature</label>
+                            <label for="temperatureSlider" class="form-label mb-3">Temperature</label>
                             <div class="row">
                                 <div class="col-2 col-xl-1"><small class="text-muted">Warm</small></div>
                                 <div class="col-8 col-xl-10"><input type="range" class="form-range" min="2700" max="6500" step="100" id="temperatureSlider" onchange="clearPresets(); adjTemperature(this.value)"></div>
@@ -44,12 +44,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    <div class="row mb-4">
                         <div class="col">
-                            <label for="presets" class="form-label">Presets</label>
+                            <label for="presets" class="form-label mb-3">Presets</label>
                             <div class="row">
-                                <div class="col-12">
-                                    <div class="btn-group-vertical" role="group" id="preset-group">
+                                <div class="col">
+                                    <div class="btn-group-vertical w-100" role="group" id="preset-group">
                                     </div>
                                 </div>
                             </div>
@@ -58,12 +58,19 @@
                 </div>
                 <div class="col-xl-3"></div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <footer class="footer text-center" style="height:40px; margin-top:50px;">
+                        <p class="text-center text-muted">❤️ LitraWeb is Open Source and available on <a href="https://github.com/hcuk94/litra-web-ui" target="_blank">GitHub</a></p>
+                    </footer>
+                </div>
+            </div>
         </div>
     <!-- JavaScript for Button Clicks -->
     <script type="text/javascript">
         
         // Error Text
-        errText = 'Failed to communicate with the API :-(';
+        errText = 'Error communicating with the API :-(';
 
         // Set up Presets for the light
         presets = {
