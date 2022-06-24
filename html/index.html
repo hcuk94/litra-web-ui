@@ -50,12 +50,6 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="btn-group-vertical" role="group" id="preset-group">
-                                        <!-- <input type="radio" class="btn-check btn-primary" name="presets" id="bright-cool-blue" onclick="applyPreset(this);">
-                                        <label class="btn btn-outline-primary" for="bright-cool-blue">Bright Cool Blue</label>
-                                        <input type="radio" class="btn-check btn-primary" name="presets" id="cozy-daylight" onclick="applyPreset(this);">
-                                        <label class="btn btn-outline-primary" for="cozy-daylight">Cosy Daylight</label>
-                                        <input type="radio" class="btn-check btn-primary" name="presets" id="mild-afternoon" onclick="applyPreset(this);">
-                                        <label class="btn btn-outline-primary" for="mild-afternoon">Mild Afternoon</label> -->
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +61,11 @@
         </div>
     <!-- JavaScript for Button Clicks -->
     <script type="text/javascript">
+        
+        // Error Text
         errText = 'Failed to communicate with the API :-(';
+
+        // Set up Presets for the light
         presets = {
             "bright-cool-blue": {"name":"Bright Cool Blue", "temp":6500, "bright":100},
             "cozy-daylight": {"name":"Cozy Daylight", "temp":5400, "bright":35},
@@ -76,6 +74,8 @@
             "cozy-candlelight": {"name":"Cozy Candlelight", "temp":3600, "bright":35},
             "bright-warm-candlelight": {"name":"Bright Warm Candlelight", "temp":2700, "bright":100}
         }
+
+        // Main API Functions
         function lightOn() {
             fetch('/api/on')
             .catch(err => alert(errText));
@@ -92,15 +92,22 @@
             fetch('/api/temperature/' + t)
             .catch(err => alert(errText));
         }
+
+        // Preset Functions
         function applyPreset(callingElement) {
             preset = callingElement.id
-            console.log(preset);
             temp = presets[preset].temp
             bright = presets[preset].bright
+            // Update sliders and call API functions
+            tempSel = document.getElementById("temperatureSlider");
+            tempSel.value = temp;
             adjTemperature(temp);
+            brightSel = document.getElementById("brightnessSlider");
+            brightSel.value = bright;
             adjBrightness(bright);
         }
-        function dispPrests() {
+        function dispPresets() {
+            // Creates the preset elements based on the earlier definition
             for (const [key, value] of Object.entries(presets)) {
                 const thisInput = document.createElement('input');
                 thisInput.type = "radio";
@@ -117,13 +124,14 @@
             }
         }
         function clearPresets() {
+            // Function to de-select a preset (for when other elements are changed)
             var p = document.getElementsByName('presets');
             for (var i=0; i<p.length; i++) {
                 var btn = p[i];
                 btn.checked = false;
             }
         }
-        window.onload = dispPrests();
+        window.onload = dispPresets();
     </script>
     </body>
 </html>
