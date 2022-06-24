@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col">
                             <label for="brightnessSlider" class="form-label">Brightness</label>
-                            <input type="range" class="form-range" min="0" max="100" step="5" id="brightnessSlider">
+                            <input type="range" class="form-range" min="0" max="100" step="5" id="brightnessSlider" onchange="adjBrightness()">
                         </div>
                     </div>
                     <div class="row">
@@ -48,6 +48,11 @@
         }
         function lightOff() {
             fetch('/api/off')
+            .catch(err => alert('Failed to communicate with the API :-('));
+        }
+        function adjBrightness() {
+            b = document.getElementById("temperatureSlider").value;
+            fetch('/api/brightness/' + b)
             .catch(err => alert('Failed to communicate with the API :-('));
         }
     </script>

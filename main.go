@@ -17,11 +17,13 @@ func main() {
 	if ld_err == nil {
 		// Define Gin Router
 		router := gin.Default()
+
 		// Define API Endpoints
 		router.GET("/api/on", apiOn)
 		router.GET("/api/off", apiOff)
 		router.GET("/api/brightness/:val", apiBrightness)
 		router.GET("/api/temperature/:val", apiTemperature)
+
 		// Serve index.html at root
 		router.LoadHTMLFiles("html/index.html")
 		router.GET("/", func(c *gin.Context) {
@@ -29,6 +31,7 @@ func main() {
 		})
 		// Static handler for css
 		router.Static("/resources", "html/resources")
+
 		// Run the Web Server
 		router.Run(":8080")
 	}
