@@ -1,0 +1,18 @@
+#
+# LitraWeb .gitignore file
+#
+
+# LitraWeb
+docker-compose.yml
+
+# OS Files
+.DS_Store?
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs_vista.db
+[Dd]esktop.ini
+*.stackdump
+$RECYCLE.BIN/
