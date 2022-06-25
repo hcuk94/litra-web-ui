@@ -18,6 +18,9 @@ func main() {
 		// Define Gin Router
 		router := gin.Default()
 
+		// Change me if you want to use a reverse proxy
+		router.SetTrustedProxies(nil)
+
 		// Define API Endpoints
 		router.GET("/api/on", apiOn)
 		router.GET("/api/off", apiOff)
