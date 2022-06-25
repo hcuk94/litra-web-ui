@@ -31,6 +31,13 @@ Then load the new rule:
 
 And finally, (re-)plugin your light.
 
+### Docker
+You can also run in Docker, though the container will need to be run in privileged mode. 
+
+An example docker-compose.yml file is included in the Repo, just make any modifications as you wish and remove the .sample extension.
+
+[![Build Docker Image](https://github.com/hcuk94/litra-web-ui/actions/workflows/docker-build.yml/badge.svg?branch=main)](https://github.com/hcuk94/litra-web-ui/actions/workflows/docker-build.yml)
+
 ## Usage
 The web interface can be accessed at the root of port 8080 on your device, e.g. ``http://127.0.0.1:8080/``
 
